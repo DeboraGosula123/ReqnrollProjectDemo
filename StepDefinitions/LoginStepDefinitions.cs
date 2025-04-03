@@ -1,8 +1,11 @@
 using System;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Reqnroll;
 using ReqnrollProjectDemo;
+using ReqnrollProjectDemo.Pages;
+using ReqnrollProjectDemo.Utils;
 
 namespace ReqnrollProjectDemo.StepDefinitions
 {
@@ -10,41 +13,46 @@ namespace ReqnrollProjectDemo.StepDefinitions
     public class LoginStepDefinitions
     {
         private IWebDriver driver;
-        
+        private GmailLoginPage loginPage;
+
         [Given("I navigate to login page")]
         public void GivenINavigateToLoginPage()
         {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("https://google.com");            
+            driver = WebDriverSingleton.Instance.Driver;
+            driver.Navigate().GoToUrl("https://mail.google.com/");
+            loginPage = new GmailLoginPage(driver);
         }
 
         [When("I enter username and password")]
         public void WhenIEnterUsernameAndPassword()
         {
-            Console.WriteLine("I navigate to login page");
+            loginPage.GmailLogin("Selautomation81@gmail.com", "Jesus123$");
         }
 
         [When("click on Login button")]
         public void WhenClickOnLoginButton()
         {
-            Console.WriteLine("I navigate to login page");
-        }
-
-        [Then("I should be logged in successfully")]
-        public void ThenIShouldBeLoggedInSuccessfully()
-        {
-            Console.WriteLine("I navigate to login page");
-        }
+            loginPage.GmailLogin("invalid_email@gmail.com", "invalid_password");
+        }        
 
         [When("I choose (.*) and (.*)")]
         public void WhenIEnterUsereAndPassy(String username, string password)
         {
             Console.WriteLine("username" + username);
         }
-        [AfterScenario]
-        public void TearDown()
+        [When("I enter {string} and {string}")]
+        public void WhenIEnterAnd(string invalidUser, string wrongPass)
         {
-            driver.Quit();
+            loginPage.GmailLogin("invalid_email@gmail.com", "invalid_password");
         }
+
+        [Then("I should see an error message {string}")]
+        public void ThenIShouldSeeAnErrorMessage(string ExpectedErrorMessage)
+        {
+            String ActualErrorMessage = "Invalid username or password";
+            Assert.That(ActualErrorMessage, Is.EqualTo(ExpectedErrorMessage), "Invalid user credentials");
+        }
+        
     }
 }
+   

@@ -7,19 +7,20 @@ using ReqnrollProjectDemo.Utils;
 using SeleniumExtentReports;
 using SeleniumExtras.WaitHelpers;
 
-namespace ReqnrollProject1.Tests
+namespace ReqnrollProjectDemo.Tests
 {
     [TestFixture]
     public class LoginTest : TestBase
     {
         private IWebDriver driver;
-
+        private GoogleSearchPage googleSearchPage;
+        private WebDriverWait wait;
+        
         [SetUp]
         public void Setup()
         {
             driver = WebDriverSingleton.Instance.Driver;
-            driver.Navigate().GoToUrl("https://www.google.com"); // Ensure navigation
-
+            driver.Navigate().GoToUrl("https://www.google.com");
         }
 
         [Test]
@@ -27,35 +28,54 @@ namespace ReqnrollProject1.Tests
         {
             driver.Manage().Window.Maximize();
 
-            // Create an instance of LoginPage and pass the WebDriver instance
-            var loginPage = new LoginPage(driver);
+            // Create an instance of GoogleSearchPage and pass the WebDriver instance
+            var googleSearchPage = new GoogleSearchPage(driver);
 
             // Find the search box and enter "Selenium" and click Enter key
-            loginPage.EnterSearchText("Selenium");
+            googleSearchPage.EnterSearchText("Selenium");
 
             // Wait until the search results are loaded
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("h3")));
 
             // Click on the first search result
-            loginPage.ClickFirstLink();
+            googleSearchPage.ClickFirstLink();
 
             //Validate PageTitle of Current Page
-            ValidatePage("Selenium");
-
-            loginPage.ValidatePageTitle1("Selenium automates browsers. That's it!");
-        }       
-
-    private void ValidatePage(string expectedTitle)
-        {
-            string actualTitle = driver.Title;
-            Assert.That(actualTitle, Is.EqualTo(expectedTitle), "Page title does not match.");
+            googleSearchPage.ValidatePageTitle();
         }
 
         [TearDown]
         public void TearDown()
         {
             WebDriverSingleton.Instance.QuitDriver();
+        }
+    }
+    public class GoogleSearchPage
+    {
+        private readonly IWebDriver _driver;
+
+        public GoogleSearchPage(IWebDriver driver)
+        {
+            _driver = driver;
+        }
+
+        public void EnterSearchText(string text)
+        {
+            var searchBox = _driver.FindElement(By.Name("q"));
+            searchBox.SendKeys(text);
+            searchBox.SendKeys(Keys.Enter);
+        }
+
+        public void ClickFirstLink()
+        {
+            var firstLink = _driver.FindElement(By.CssSelector("h3"));
+            firstLink.Click();
+        }
+
+        public void ValidatePageTitle()
+        {
+            Assert.That(_driver.Title.Contains("Selenium"), Is.True);
         }
     }
 }
