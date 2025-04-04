@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -9,14 +9,14 @@ namespace ReqnrollProjectDemo.Pages
 {
     public class LoginPage
     {
-        private readonly IWebDriver _driver;
+        private IWebDriver _driver;
         public LoginPage(IWebDriver driver) => _driver = driver;
-        public IWebElement SearchBox => _driver.FindElement(By.XPath("//textarea[@name='q']"));
-        public IWebElement PageTitle => _driver.FindElement(By.XPath("//h1[text()=\"Selenium automates browsers. That's it!\"]"));
-        public IWebElement Text1 => _driver.FindElement(By.XPath("//p[text()=\"What you do with that power is entirely up to you.\"]"));
-        public IWebElement Text2 => _driver.FindElement(By.CssSelector("p:contains(\"Primarily it is for automating web applications for testing purposes, but is certainly not limited to just that.\")"));
-        public IWebElement FirstResult => _driver.FindElement(By.CssSelector("h3"));
-        public IWebElement FirstResultLink => _driver.FindElement(By.XPath("//h1[contains(text(),\"Selenium automates browsers. That's it!\")]"));
+        private IWebElement SearchBox => _driver.FindElement(By.XPath("//textarea[@name='q']"));
+        private IWebElement PageTitle => _driver.FindElement(By.XPath("//h1[text()=\"Selenium automates browsers. That's it!\"]"));
+        private IWebElement Text1 => _driver.FindElement(By.XPath("//p[text()=\"What you do with that power is entirely up to you.\"]"));
+        private IWebElement Text2 => _driver.FindElement(By.CssSelector("p:contains(\"Primarily it is for automating web applications for testing purposes, but is certainly not limited to just that.\")"));
+        private IWebElement FirstResult => _driver.FindElement(By.CssSelector("h3"));
+        private IWebElement FirstResultLink => _driver.FindElement(By.XPath("//h1[contains(text(),\"Selenium automates browsers. That's it!\")]"));
 
         // Actions: Enter SearchText
         public void EnterSearchText(string enterText)
