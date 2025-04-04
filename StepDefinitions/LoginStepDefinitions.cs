@@ -35,7 +35,7 @@ namespace ReqnrollProjectDemo.StepDefinitions
             loginPage.GmailLogin("invalid_email@gmail.com", "invalid_password");
         }        
 
-        [When("I choose (.*) and (.*)")]
+        [When(@"I choose ""(.*)"" and ""(.*)""")]
         public void WhenIEnterUsereAndPassy(String username, string password)
         {
             Console.WriteLine("username" + username);

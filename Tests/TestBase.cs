@@ -20,7 +20,8 @@ namespace SeleniumExtentReports
         [OneTimeSetUp]
         public static void SetupReport()
         {
-            string reportPath = @"C:\\Users\\Debora Gosula\\source\\repos\\ReqnrollProject1\\HtmlReports\\ExtentReport.html";
+            //string reportPath = @"C:\\Users\\Debora Gosula\\source\\repos\\ReqnrollProject1\\HtmlReports\\ExtentReport.html";
+            string reportPath = @"E:\\DeboraGosula\\HtmlReports\\ExtentReport.html";
             htmlReporter = new ExtentHtmlReporter(reportPath);
             extent = new AventStack.ExtentReports.ExtentReports();
             extent.AttachReporter(htmlReporter);

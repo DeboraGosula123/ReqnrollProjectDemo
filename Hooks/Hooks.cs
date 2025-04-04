@@ -9,10 +9,12 @@ using ReqnrollProjectDemo.Utils;
 
 namespace ReqnrollProjectDemo.Hooks
 {
+    [Binding]
     public class Hooks
     {
         private IWebDriver driver;
 
+        
         [BeforeScenario]
         public void BeforeScenario()
         {
@@ -23,6 +25,6 @@ namespace ReqnrollProjectDemo.Hooks
         public void AfterScenario()
         {
             WebDriverSingleton.Instance.QuitDriver();
-        }
+        }        
     }
 }

@@ -145,7 +145,7 @@ namespace ReqnrollProjectDemo.Features
         [NUnit.Framework.DescriptionAttribute("Test login with multiple credentials")]
         [NUnit.Framework.CategoryAttribute("MutipleUsers")]
         [NUnit.Framework.TestCaseAttribute("Selautomation81@gmail.com", "Jesus123$", null)]
-        [NUnit.Framework.TestCaseAttribute("deboradandu@gmail.com", "JesusmyLove123$", null)]
+        [NUnit.Framework.TestCaseAttribute("testautom123@gmail.com", "Benji123$", null)]
         public async System.Threading.Tasks.Task TestLoginWithMultipleCredentials(string email, string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
