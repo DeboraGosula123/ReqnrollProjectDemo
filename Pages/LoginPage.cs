@@ -9,7 +9,7 @@ namespace ReqnrollProjectDemo.Pages
 {
     public class LoginPage
     {
-        private IWebDriver _driver;
+        private readonly IWebDriver _driver;
         public LoginPage(IWebDriver driver) => _driver = driver;
         private IWebElement SearchBox => _driver.FindElement(By.XPath("//textarea[@name='q']"));
         private IWebElement PageTitle => _driver.FindElement(By.XPath("//h1[text()=\"Selenium automates browsers. That's it!\"]"));
