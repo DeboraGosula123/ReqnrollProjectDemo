@@ -7,12 +7,12 @@ using System;
 
 namespace ReqnrollProjectDemo.Pages
 {
-    public class GoogleSeachPage
+    public class GoogleSearchPage
     {
         private readonly IWebDriver _driver;
         private readonly WebDriverWait wait;
 
-        public GoogleSeachPage(IWebDriver driver)
+        public GoogleSearchPage(IWebDriver driver)
         {
             _driver = driver;
             wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));

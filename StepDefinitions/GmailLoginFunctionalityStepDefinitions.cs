@@ -3,7 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using Reqnroll;
 using ReqnrollProjectDemo.Pages;
-using ReqnrollProjectDemo.Utils;
+using ReqnrollProjectDemo.Utilities;
 
 namespace ReqnrollProjectDemo.StepDefinitions
 {
@@ -31,7 +31,7 @@ namespace ReqnrollProjectDemo.StepDefinitions
         [Then("I should be logged in successfully")]
         public void ThenIShouldBeLoggedInSuccessfully()
         {
-            loginPage.IsInboxVisible();
+            loginPage.GetInboxVisibility();
         }
 
         [When("I enter invalid email and password")]

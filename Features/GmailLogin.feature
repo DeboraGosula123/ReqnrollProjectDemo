@@ -13,7 +13,7 @@
     When I enter invalid email and password
     Then I  should see an error message
 
-  @MutipleUsers
+  @MultipleUsers
   Scenario Outline: Test login with multiple credentials
     Given I navigate to Gmail login page
     When I enter email "<email>" and password "<password>"

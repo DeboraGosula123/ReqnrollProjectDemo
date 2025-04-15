@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using ReqnrollProjectDemo.Pages;
-using ReqnrollProjectDemo.Utils;
+using ReqnrollProjectDemo.Utilities;
 using SeleniumExtentReports;
 using SeleniumExtras.WaitHelpers;
 

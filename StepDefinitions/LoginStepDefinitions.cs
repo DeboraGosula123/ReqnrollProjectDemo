@@ -5,7 +5,7 @@ using OpenQA.Selenium.Chrome;
 using Reqnroll;
 using ReqnrollProjectDemo;
 using ReqnrollProjectDemo.Pages;
-using ReqnrollProjectDemo.Utils;
+using ReqnrollProjectDemo.Utilities;
 
 namespace ReqnrollProjectDemo.StepDefinitions
 {

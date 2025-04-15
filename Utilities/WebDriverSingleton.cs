@@ -7,7 +7,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using NUnit.Framework;
 
-namespace ReqnrollProjectDemo.Utils
+namespace ReqnrollProjectDemo.Utilities
 {
     public class WebDriverSingleton
     {

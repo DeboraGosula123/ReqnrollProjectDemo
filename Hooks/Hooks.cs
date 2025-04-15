@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using ReqnrollProjectDemo.Utils;
+using ReqnrollProjectDemo.Utilities;
 
 namespace ReqnrollProjectDemo.Hooks
 {
-    [Binding]
+    [SetUpFixture]
     public class Hooks
     {
-        private IWebDriver driver;
-
+        private IWebDriver driver;        
         
+        [OneTimeSetUp]
+        public void GlobalSetup()
+        {
+            AppLogger.Init();
+            AppLogger.Info("=== Test Suite Execution Started ===");
+        }
         [BeforeScenario]
         public void BeforeScenario()
         {
@@ -25,6 +25,13 @@ namespace ReqnrollProjectDemo.Hooks
         public void AfterScenario()
         {
             WebDriverSingleton.Instance.QuitDriver();
-        }        
+        }
+
+        [OneTimeTearDown]
+        public void GlobalTeardown()
+        {
+            AppLogger.Info("=== Test Suite Execution Completed ===");
+            AppLogger.Close();
+        }
     }
 }
